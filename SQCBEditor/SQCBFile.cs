@@ -12,6 +12,9 @@ namespace SQCBEditor
         private const string SQCB_IDENTIFIER = "SQCB";
         private const string SQCB_CHECKSUM = "RDBP";
 
+        private Header _header;
+        public List<FileEntry> Entries => _header.Entries;
+
         public struct FileEntry
         {
             public string Name;
@@ -61,7 +64,7 @@ namespace SQCBEditor
             return header;
         }
 
-        public static Header LoadFile(string filename)
+        public static SQCBFile LoadFile(string filename)
         {
             using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
             {
@@ -69,21 +72,24 @@ namespace SQCBEditor
             }
         }
 
-        public static Header LoadFile(Stream stream) => LoadFile(ref stream);
+        public static SQCBFile LoadFile(Stream stream) => LoadFile(ref stream);
 
-        public static Header LoadFile(ref Stream stream)
+        public static SQCBFile LoadFile(ref Stream stream)
         {
-            Header header = LoadHeader(ref stream);
+            SQCBFile file = new SQCBFile
+            {
+                _header = LoadHeader(ref stream)
+            };
 
             stream.Position = 0;
 
-            for (int i = 0; i < header.Entries.Count; i++)
+            for (int i = 0; i < file._header.Entries.Count; i++)
             {
-                FileEntry file = header.Entries[i];
-                file.Data = new byte[file.Length + 1];
-                stream.Position = file.Offset;
-                stream.Read(file.Data, 0, file.Length);
-                header.Entries[i] = file;
+                FileEntry entry = file._header.Entries[i];
+                entry.Data = new byte[entry.Length + 1];
+                stream.Position = entry.Offset;
+                stream.Read(entry.Data, 0, entry.Length);
+                file._header.Entries[i] = entry;
             }
 
             string checksum = stream.ReadText16(4);
@@ -91,7 +97,7 @@ namespace SQCBEditor
             if (checksum != SQCB_CHECKSUM)
                 throw new DataLeakException();
 
-            return header;
+            return file;
         }
     }
 }
