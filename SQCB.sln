@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{C990FDA6-380D-48DA-954A-B40582928294}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQCBEditor", "SQCBEditor\SQCBEditor.csproj", "{70530097-2F48-4128-9548-AEB81DAA84D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C990FDA6-380D-48DA-954A-B40582928294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C990FDA6-380D-48DA-954A-B40582928294}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C990FDA6-380D-48DA-954A-B40582928294}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C990FDA6-380D-48DA-954A-B40582928294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70530097-2F48-4128-9548-AEB81DAA84D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70530097-2F48-4128-9548-AEB81DAA84D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70530097-2F48-4128-9548-AEB81DAA84D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70530097-2F48-4128-9548-AEB81DAA84D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

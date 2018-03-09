@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace SQCBEditor
 {
     partial class Form1
     {
