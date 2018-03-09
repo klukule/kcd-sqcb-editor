@@ -15,7 +15,7 @@ namespace SQCBEditor
         public Form1()
         {
             InitializeComponent();
-            SQCBFile.LoadHeader();
+            SQCBFile.LoadFile("C:\\Users\\klukule\\Desktop\\RAIN-A.sqcb");
         }
     }
 }
