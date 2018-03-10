@@ -20,12 +20,16 @@ namespace SQCBEditor
             File = null;
             LB_Files.SelectedIndexChanged += SelectedSoundChanged;
             TS_Save.Enabled = false;
+            TS_CEdit.Enabled = false;
+            TS_Export.Enabled = false;
         }
 
         private void SelectedSoundChanged(object sender, EventArgs e)
         {
             playbackPanel1.CleanUp();
             playbackPanel1.BeginPlayback(new MemoryStream(File.Entries[LB_Files.SelectedIndex].Data));
+
+            TS_Export.Enabled = LB_Files.SelectedIndex > 0;
         }
 
         private void LoadFile(object sender, EventArgs e)
@@ -49,6 +53,7 @@ namespace SQCBEditor
             }
 
             TS_Save.Enabled = true;
+            TS_CEdit.Enabled = true;
         }
 
         private void SaveFile(object sender, EventArgs e)
@@ -69,6 +74,28 @@ namespace SQCBEditor
                     }
                 }
             }
+        }
+
+        private void TS_Export_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog()
+            {
+                Filter = "OGG Sound file|*.ogg",
+                FileName = File.Entries[LB_Files.SelectedIndex].Name
+            };
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                using (Stream fs = sfd.OpenFile())
+                {
+                    fs.Write(File.Entries[LB_Files.SelectedIndex].Data, 0, File.Entries[LB_Files.SelectedIndex].Length);
+                }
+            }
+        }
+
+        private void TS_Import_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

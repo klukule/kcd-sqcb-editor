@@ -31,16 +31,20 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TS_Open = new System.Windows.Forms.ToolStripMenuItem();
+            this.TS_Save = new System.Windows.Forms.ToolStripMenuItem();
             this.LB_Files = new System.Windows.Forms.ListBox();
             this.playbackPanel1 = new SQCBEditor.PlaybackPanel();
-            this.TS_Save = new System.Windows.Forms.ToolStripMenuItem();
+            this.TS_CEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.TS_Import = new System.Windows.Forms.ToolStripMenuItem();
+            this.TS_Export = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.TS_CEdit});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -63,6 +67,13 @@
             this.TS_Open.Text = "Open";
             this.TS_Open.Click += new System.EventHandler(this.LoadFile);
             // 
+            // TS_Save
+            // 
+            this.TS_Save.Name = "TS_Save";
+            this.TS_Save.Size = new System.Drawing.Size(180, 22);
+            this.TS_Save.Text = "Save";
+            this.TS_Save.Click += new System.EventHandler(this.SaveFile);
+            // 
             // LB_Files
             // 
             this.LB_Files.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -83,12 +94,28 @@
             this.playbackPanel1.Size = new System.Drawing.Size(593, 419);
             this.playbackPanel1.TabIndex = 2;
             // 
-            // TS_Save
+            // TS_CEdit
             // 
-            this.TS_Save.Name = "TS_Save";
-            this.TS_Save.Size = new System.Drawing.Size(180, 22);
-            this.TS_Save.Text = "Save";
-            this.TS_Save.Click += new System.EventHandler(this.SaveFile);
+            this.TS_CEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TS_Import,
+            this.TS_Export});
+            this.TS_CEdit.Name = "TS_CEdit";
+            this.TS_CEdit.Size = new System.Drawing.Size(39, 20);
+            this.TS_CEdit.Text = "Edit";
+            // 
+            // TS_Import
+            // 
+            this.TS_Import.Name = "TS_Import";
+            this.TS_Import.Size = new System.Drawing.Size(180, 22);
+            this.TS_Import.Text = "Import new";
+            this.TS_Import.Click += new System.EventHandler(this.TS_Import_Click);
+            // 
+            // TS_Export
+            // 
+            this.TS_Export.Name = "TS_Export";
+            this.TS_Export.Size = new System.Drawing.Size(180, 22);
+            this.TS_Export.Text = "Export selected";
+            this.TS_Export.Click += new System.EventHandler(this.TS_Export_Click);
             // 
             // Form1
             // 
@@ -116,6 +143,9 @@
         private System.Windows.Forms.ListBox LB_Files;
         private PlaybackPanel playbackPanel1;
         private System.Windows.Forms.ToolStripMenuItem TS_Save;
+        private System.Windows.Forms.ToolStripMenuItem TS_CEdit;
+        private System.Windows.Forms.ToolStripMenuItem TS_Import;
+        private System.Windows.Forms.ToolStripMenuItem TS_Export;
     }
 }
 
