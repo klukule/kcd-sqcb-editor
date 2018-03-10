@@ -11,9 +11,14 @@ namespace SQCBEditor
     {
         private const string SQCB_IDENTIFIER = "SQCB";
         private const string SQCB_CHECKSUM = "RDBP";
+        private const string SQCB_VERSION = "1.00";
 
         private Header _header;
-        public List<FileEntry> Entries => _header.Entries;
+        public List<FileEntry> Entries
+        {
+            get => _header.Entries;
+            set => _header.Entries = value;
+        }
 
         public struct FileEntry
         {
@@ -86,7 +91,7 @@ namespace SQCBEditor
             for (int i = 0; i < file._header.Entries.Count; i++)
             {
                 FileEntry entry = file._header.Entries[i];
-                entry.Data = new byte[entry.Length + 1];
+                entry.Data = new byte[entry.Length];
                 stream.Position = entry.Offset;
                 stream.Read(entry.Data, 0, entry.Length);
                 file._header.Entries[i] = entry;
@@ -98,6 +103,45 @@ namespace SQCBEditor
                 throw new DataLeakException();
 
             return file;
+        }
+
+        public static void SaveFile(string path, SQCBFile file)
+        {
+            using (FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write))
+            {
+                SaveFile(fs, file);
+            }
+        }
+
+        public static void SaveFile(Stream stream, SQCBFile file) => SaveFile(ref stream, file);
+
+        public static void SaveFile(ref Stream stream, SQCBFile file)
+        {
+            stream.Position = 0;
+            stream.Write16(SQCB_IDENTIFIER, false);
+            stream.Write16(SQCB_VERSION, false);
+            stream.Write(file.Entries.Count);
+
+            int dataOffset = 20; //Identifier, Version, entries.Count (Int)
+            for (int i = 0; i < file.Entries.Count; i++)
+            {
+                dataOffset += file.Entries[i].Name.Length * 2 + 2 + 4 + 4; //2 bytes per char + 2 null terminator, offset (int), length (int)
+            }
+
+            stream.Position = 20;
+            for (int i = 0; i < file.Entries.Count; i++)
+            {
+                stream.Write16(file.Entries[i].Name);
+                stream.Write(dataOffset);
+                stream.Write(file.Entries[i].Data.Length);
+
+                dataOffset += file.Entries[i].Data.Length;
+            }
+            for (int i = 0; i < file.Entries.Count; i++)
+            {
+                stream.Write(file.Entries[i].Data, 0 , file.Entries[i].Data.Length);
+            }
+            stream.Write16(SQCB_CHECKSUM, false);
         }
     }
 }

@@ -19,6 +19,7 @@ namespace SQCBEditor
             InitializeComponent();
             File = null;
             LB_Files.SelectedIndexChanged += SelectedSoundChanged;
+            TS_Save.Enabled = false;
         }
 
         private void SelectedSoundChanged(object sender, EventArgs e)
@@ -35,13 +36,38 @@ namespace SQCBEditor
             };
             if(fd.ShowDialog() == DialogResult.OK)
             {
-                File = SQCBFile.LoadFile(fd.OpenFile());
+                using (Stream stream = fd.OpenFile())
+                {
+                    File = SQCBFile.LoadFile(stream);
+                }
             }
 
             LB_Files.Items.Clear();
             foreach (var entry in File.Entries)
             {
                 LB_Files.Items.Add(entry.Name);
+            }
+
+            TS_Save.Enabled = true;
+        }
+
+        private void SaveFile(object sender, EventArgs e)
+        {
+            //Shouldn't really happen, but whatever
+            if(File != null)
+            {
+                SaveFileDialog sfd = new SaveFileDialog()
+                {
+                    Filter = "Sequencer bank file|*.sqcb",
+                };
+
+                if(sfd.ShowDialog() == DialogResult.OK)
+                {
+                    using (Stream fs = sfd.OpenFile())
+                    {
+                        SQCBFile.SaveFile(fs, File);
+                    }
+                }
             }
         }
     }

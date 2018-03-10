@@ -235,5 +235,19 @@ namespace SQCBEditor
             return text;
         }
 
+        public static void Write16(this Stream fs, string text, bool terminator = true)
+        {
+            for (int i = 0; i < text.Length; i++)
+            {
+                fs.WriteByte((byte)text[i]);
+                fs.WriteByte((byte)(text[i] >> 8));
+            }
+            if (terminator)
+            {
+                // Null terminator
+                fs.WriteByte(0);
+                fs.WriteByte(0);
+            }
+        }
     }
 }

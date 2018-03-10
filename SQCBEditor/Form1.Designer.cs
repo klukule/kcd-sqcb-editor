@@ -30,9 +30,10 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TS_Open = new System.Windows.Forms.ToolStripMenuItem();
             this.LB_Files = new System.Windows.Forms.ListBox();
             this.playbackPanel1 = new SQCBEditor.PlaybackPanel();
+            this.TS_Save = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,17 +50,18 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem});
+            this.TS_Open,
+            this.TS_Save});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // openToolStripMenuItem
+            // TS_Open
             // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.LoadFile);
+            this.TS_Open.Name = "TS_Open";
+            this.TS_Open.Size = new System.Drawing.Size(180, 22);
+            this.TS_Open.Text = "Open";
+            this.TS_Open.Click += new System.EventHandler(this.LoadFile);
             // 
             // LB_Files
             // 
@@ -80,6 +82,13 @@
             this.playbackPanel1.Name = "playbackPanel1";
             this.playbackPanel1.Size = new System.Drawing.Size(593, 419);
             this.playbackPanel1.TabIndex = 2;
+            // 
+            // TS_Save
+            // 
+            this.TS_Save.Name = "TS_Save";
+            this.TS_Save.Size = new System.Drawing.Size(180, 22);
+            this.TS_Save.Text = "Save";
+            this.TS_Save.Click += new System.EventHandler(this.SaveFile);
             // 
             // Form1
             // 
@@ -103,9 +112,10 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TS_Open;
         private System.Windows.Forms.ListBox LB_Files;
         private PlaybackPanel playbackPanel1;
+        private System.Windows.Forms.ToolStripMenuItem TS_Save;
     }
 }
 
