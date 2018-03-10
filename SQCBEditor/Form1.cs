@@ -95,7 +95,34 @@ namespace SQCBEditor
 
         private void TS_Import_Click(object sender, EventArgs e)
         {
+            OpenFileDialog fd = new OpenFileDialog
+            {
+                Filter = "OGG Sound file|*.ogg"
+            };
+            if (fd.ShowDialog() == DialogResult.OK)
+            {
+                using (Stream stream = fd.OpenFile())
+                using (MemoryStream ms = new MemoryStream((int)stream.Length))
+                {
+                    stream.CopyTo(ms);
+                    SQCBFile.FileEntry entry = new SQCBFile.FileEntry
+                    {
+                        Name = Path.GetFileName(fd.FileName),
+                        Data = ms.ToArray(),
+                        Offset = 0, //Will be calculated during export
+                        Length = (int)ms.Length
+                    };
+                    File.Entries.Add(entry);
+                }
+                LB_Files.Items.Clear();
+                foreach (var entry in File.Entries)
+                {
+                    LB_Files.Items.Add(entry.Name);
+                }
 
+                TS_Save.Enabled = true;
+                TS_CEdit.Enabled = true;
+            }
         }
 
         private void exportAllToolStripMenuItem_Click(object sender, EventArgs e)
