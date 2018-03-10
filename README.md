@@ -14,4 +14,4 @@ What you can do:
 * [NAudio.Vorbis](https://github.com/naudio/Vorbis) (OGG reader)
 
 
-If you find any bugs feel free to report them directly to my email or create issue
+If you find any bugs or have idea for feature, feel free to report them directly to my email or create issue
