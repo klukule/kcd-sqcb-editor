@@ -33,13 +33,14 @@
             this.TS_New = new System.Windows.Forms.ToolStripMenuItem();
             this.TS_Open = new System.Windows.Forms.ToolStripMenuItem();
             this.TS_Save = new System.Windows.Forms.ToolStripMenuItem();
+            this.TS_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.TS_CEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.TS_Import = new System.Windows.Forms.ToolStripMenuItem();
             this.TS_Export = new System.Windows.Forms.ToolStripMenuItem();
             this.TS_ExportAll = new System.Windows.Forms.ToolStripMenuItem();
             this.LB_Files = new System.Windows.Forms.ListBox();
             this.playbackPanel1 = new SQCBEditor.PlaybackPanel();
-            this.TS_Exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.TS_RemoveSelected = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,30 +69,38 @@
             // TS_New
             // 
             this.TS_New.Name = "TS_New";
-            this.TS_New.Size = new System.Drawing.Size(180, 22);
+            this.TS_New.Size = new System.Drawing.Size(103, 22);
             this.TS_New.Text = "New";
             this.TS_New.Click += new System.EventHandler(this.TS_New_Click);
             // 
             // TS_Open
             // 
             this.TS_Open.Name = "TS_Open";
-            this.TS_Open.Size = new System.Drawing.Size(180, 22);
+            this.TS_Open.Size = new System.Drawing.Size(103, 22);
             this.TS_Open.Text = "Open";
             this.TS_Open.Click += new System.EventHandler(this.LoadFile);
             // 
             // TS_Save
             // 
             this.TS_Save.Name = "TS_Save";
-            this.TS_Save.Size = new System.Drawing.Size(180, 22);
+            this.TS_Save.Size = new System.Drawing.Size(103, 22);
             this.TS_Save.Text = "Save";
             this.TS_Save.Click += new System.EventHandler(this.SaveFile);
+            // 
+            // TS_Exit
+            // 
+            this.TS_Exit.Name = "TS_Exit";
+            this.TS_Exit.Size = new System.Drawing.Size(103, 22);
+            this.TS_Exit.Text = "Exit";
+            this.TS_Exit.Click += new System.EventHandler(this.TS_Exit_Click);
             // 
             // TS_CEdit
             // 
             this.TS_CEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TS_Import,
             this.TS_Export,
-            this.TS_ExportAll});
+            this.TS_ExportAll,
+            this.TS_RemoveSelected});
             this.TS_CEdit.Name = "TS_CEdit";
             this.TS_CEdit.Size = new System.Drawing.Size(39, 20);
             this.TS_CEdit.Text = "Edit";
@@ -99,21 +108,21 @@
             // TS_Import
             // 
             this.TS_Import.Name = "TS_Import";
-            this.TS_Import.Size = new System.Drawing.Size(153, 22);
+            this.TS_Import.Size = new System.Drawing.Size(180, 22);
             this.TS_Import.Text = "Import new";
             this.TS_Import.Click += new System.EventHandler(this.TS_Import_Click);
             // 
             // TS_Export
             // 
             this.TS_Export.Name = "TS_Export";
-            this.TS_Export.Size = new System.Drawing.Size(153, 22);
+            this.TS_Export.Size = new System.Drawing.Size(180, 22);
             this.TS_Export.Text = "Export selected";
             this.TS_Export.Click += new System.EventHandler(this.TS_Export_Click);
             // 
             // TS_ExportAll
             // 
             this.TS_ExportAll.Name = "TS_ExportAll";
-            this.TS_ExportAll.Size = new System.Drawing.Size(153, 22);
+            this.TS_ExportAll.Size = new System.Drawing.Size(180, 22);
             this.TS_ExportAll.Text = "Export all";
             this.TS_ExportAll.Click += new System.EventHandler(this.TS_ExportAll_Click);
             // 
@@ -137,12 +146,12 @@
             this.playbackPanel1.Size = new System.Drawing.Size(593, 419);
             this.playbackPanel1.TabIndex = 2;
             // 
-            // TS_Exit
+            // TS_RemoveSelected
             // 
-            this.TS_Exit.Name = "TS_Exit";
-            this.TS_Exit.Size = new System.Drawing.Size(180, 22);
-            this.TS_Exit.Text = "Exit";
-            this.TS_Exit.Click += new System.EventHandler(this.TS_Exit_Click);
+            this.TS_RemoveSelected.Name = "TS_RemoveSelected";
+            this.TS_RemoveSelected.Size = new System.Drawing.Size(180, 22);
+            this.TS_RemoveSelected.Text = "Remove selected";
+            this.TS_RemoveSelected.Click += new System.EventHandler(this.TS_RemoveSelected_Click);
             // 
             // Form1
             // 
@@ -176,6 +185,7 @@
         private System.Windows.Forms.ToolStripMenuItem TS_ExportAll;
         private System.Windows.Forms.ToolStripMenuItem TS_New;
         private System.Windows.Forms.ToolStripMenuItem TS_Exit;
+        private System.Windows.Forms.ToolStripMenuItem TS_RemoveSelected;
     }
 }
 

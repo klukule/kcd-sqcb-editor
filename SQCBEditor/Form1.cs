@@ -31,6 +31,7 @@ namespace SQCBEditor
                 playbackPanel1.BeginPlayback(new MemoryStream(File.Entries[LB_Files.SelectedIndex].Data));
 
             TS_Export.Enabled = LB_Files.SelectedIndex > 0;
+            TS_RemoveSelected.Enabled = LB_Files.SelectedIndex > 0;
         }
 
         private void LoadFile(object sender, EventArgs e)
@@ -162,6 +163,20 @@ namespace SQCBEditor
         private void TS_Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void TS_RemoveSelected_Click(object sender, EventArgs e)
+        {
+            if(LB_Files.SelectedIndex > -1)
+                File.Entries.RemoveAt(LB_Files.SelectedIndex);
+
+            LB_Files.Items.Clear();
+            foreach (var entry in File.Entries)
+            {
+                LB_Files.Items.Add(entry.Name);
+            }
+
+            TS_RemoveSelected.Enabled = LB_Files.SelectedIndex > 0;
         }
     }
 }
