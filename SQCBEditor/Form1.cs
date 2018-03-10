@@ -27,7 +27,8 @@ namespace SQCBEditor
         private void SelectedSoundChanged(object sender, EventArgs e)
         {
             playbackPanel1.CleanUp();
-            playbackPanel1.BeginPlayback(new MemoryStream(File.Entries[LB_Files.SelectedIndex].Data));
+            if(LB_Files.SelectedIndex >= 0)
+                playbackPanel1.BeginPlayback(new MemoryStream(File.Entries[LB_Files.SelectedIndex].Data));
 
             TS_Export.Enabled = LB_Files.SelectedIndex > 0;
         }
@@ -125,7 +126,7 @@ namespace SQCBEditor
             }
         }
 
-        private void exportAllToolStripMenuItem_Click(object sender, EventArgs e)
+        private void TS_ExportAll_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog()
             {
@@ -142,6 +143,25 @@ namespace SQCBEditor
                     }
                 }
             }
+        }
+
+        private void TS_New_Click(object sender, EventArgs e)
+        {
+            File = new SQCBFile();
+
+            LB_Files.Items.Clear();
+            foreach (var entry in File.Entries)
+            {
+                LB_Files.Items.Add(entry.Name);
+            }
+
+            TS_Save.Enabled = true;
+            TS_CEdit.Enabled = true;
+        }
+
+        private void TS_Exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

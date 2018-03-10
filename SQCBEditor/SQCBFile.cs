@@ -34,6 +34,11 @@ namespace SQCBEditor
             public List<FileEntry> Entries; 
         }
 
+        public SQCBFile()
+        {
+            _header = new Header { Entries = new List<FileEntry>(), Version = SQCB_VERSION };
+        }
+
         public static Header LoadHeader(string filename)
         {
             using (FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read))
@@ -86,7 +91,8 @@ namespace SQCBEditor
                 _header = LoadHeader(ref stream)
             };
 
-            stream.Position = 0;
+            if(file.Entries.Count > 0)
+                stream.Position = 0;
 
             for (int i = 0; i < file._header.Entries.Count; i++)
             {
