@@ -97,5 +97,24 @@ namespace SQCBEditor
         {
 
         }
+
+        private void exportAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog()
+            {
+                Description = "Please select folder to export .ogg files to"
+            };
+
+            if (fbd.ShowDialog() == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+            {
+                foreach (var item in File.Entries)
+                {
+                    using (FileStream fs = new FileStream(Path.Combine(fbd.SelectedPath, item.Name), FileMode.Create, FileAccess.Write))
+                    {
+                        fs.Write(item.Data, 0, item.Data.Length);
+                    }
+                }
+            }
+        }
     }
 }

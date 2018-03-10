@@ -33,10 +33,11 @@
             this.TS_Open = new System.Windows.Forms.ToolStripMenuItem();
             this.TS_Save = new System.Windows.Forms.ToolStripMenuItem();
             this.LB_Files = new System.Windows.Forms.ListBox();
-            this.playbackPanel1 = new SQCBEditor.PlaybackPanel();
             this.TS_CEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.TS_Import = new System.Windows.Forms.ToolStripMenuItem();
             this.TS_Export = new System.Windows.Forms.ToolStripMenuItem();
+            this.playbackPanel1 = new SQCBEditor.PlaybackPanel();
+            this.exportAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,14 +64,14 @@
             // TS_Open
             // 
             this.TS_Open.Name = "TS_Open";
-            this.TS_Open.Size = new System.Drawing.Size(180, 22);
+            this.TS_Open.Size = new System.Drawing.Size(103, 22);
             this.TS_Open.Text = "Open";
             this.TS_Open.Click += new System.EventHandler(this.LoadFile);
             // 
             // TS_Save
             // 
             this.TS_Save.Name = "TS_Save";
-            this.TS_Save.Size = new System.Drawing.Size(180, 22);
+            this.TS_Save.Size = new System.Drawing.Size(103, 22);
             this.TS_Save.Text = "Save";
             this.TS_Save.Click += new System.EventHandler(this.SaveFile);
             // 
@@ -84,21 +85,12 @@
             this.LB_Files.Size = new System.Drawing.Size(200, 420);
             this.LB_Files.TabIndex = 1;
             // 
-            // playbackPanel1
-            // 
-            this.playbackPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.playbackPanel1.Location = new System.Drawing.Point(207, 28);
-            this.playbackPanel1.Name = "playbackPanel1";
-            this.playbackPanel1.Size = new System.Drawing.Size(593, 419);
-            this.playbackPanel1.TabIndex = 2;
-            // 
             // TS_CEdit
             // 
             this.TS_CEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TS_Import,
-            this.TS_Export});
+            this.TS_Export,
+            this.exportAllToolStripMenuItem});
             this.TS_CEdit.Name = "TS_CEdit";
             this.TS_CEdit.Size = new System.Drawing.Size(39, 20);
             this.TS_CEdit.Text = "Edit";
@@ -116,6 +108,23 @@
             this.TS_Export.Size = new System.Drawing.Size(180, 22);
             this.TS_Export.Text = "Export selected";
             this.TS_Export.Click += new System.EventHandler(this.TS_Export_Click);
+            // 
+            // playbackPanel1
+            // 
+            this.playbackPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.playbackPanel1.Location = new System.Drawing.Point(207, 28);
+            this.playbackPanel1.Name = "playbackPanel1";
+            this.playbackPanel1.Size = new System.Drawing.Size(593, 419);
+            this.playbackPanel1.TabIndex = 2;
+            // 
+            // exportAllToolStripMenuItem
+            // 
+            this.exportAllToolStripMenuItem.Name = "exportAllToolStripMenuItem";
+            this.exportAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportAllToolStripMenuItem.Text = "Export all";
+            this.exportAllToolStripMenuItem.Click += new System.EventHandler(this.exportAllToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -146,6 +155,7 @@
         private System.Windows.Forms.ToolStripMenuItem TS_CEdit;
         private System.Windows.Forms.ToolStripMenuItem TS_Import;
         private System.Windows.Forms.ToolStripMenuItem TS_Export;
+        private System.Windows.Forms.ToolStripMenuItem exportAllToolStripMenuItem;
     }
 }
 
